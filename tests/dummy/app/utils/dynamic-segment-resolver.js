@@ -1,4 +1,4 @@
-import fetch from 'ember-network/fetch';
+import fetch from 'ember-fetch/ajax';
 
 /* eslint-disable */
 export default function dynamicSegmentResolver(dynamicSegmentKey, allSegments, otherDynamicSegments) {
@@ -11,11 +11,11 @@ export default function dynamicSegmentResolver(dynamicSegmentKey, allSegments, o
 
   if (dynamicSegmentKey === 'user_id') {
     return fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
+      // .then(response => response.json())
       .then(users => users.map(user => user.id));
   } else if (dynamicSegmentKey === 'photo_id' && otherDynamicSegments.user_id) {
     return fetch(`https://jsonplaceholder.typicode.com/users/${otherDynamicSegments.user_id}/photos`)
-      .then(response => response.json())
+      // .then(response => response.json())
       .then(photos => photos.slice(0, 8))
       .then(photos => photos.map(photo => photo.id));
   }

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import fetch from 'ember-network/fetch';
+import fetch from 'ember-fetch/ajax';
 
 export default Ember.Route.extend({
   headData: Ember.inject.service(),
@@ -16,7 +16,7 @@ export default Ember.Route.extend({
 
     if (isFastBoot || !modelFromShoebox) {
       return fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
+        // // .then(response => response.json())
         .then(users => {
           if (isFastBoot) {
             if (!shoeboxStore) {

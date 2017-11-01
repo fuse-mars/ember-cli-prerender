@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import fetch from 'ember-network/fetch';
+import fetch from 'ember-fetch/ajax';
 
 export default Ember.Route.extend({
   headData: Ember.inject.service(),
@@ -9,7 +9,7 @@ export default Ember.Route.extend({
   model({ user_id }) {
     const user = this.modelFor('user');
     return fetch(`https://jsonplaceholder.typicode.com/users/${user_id}/photos`)
-      .then(response => response.json())
+      // .then(response => response.json())
       .then(photos => photos.slice(0, 8)) // Just reducing the size of the page
       .then(photos => {
         Ember.set(user, 'photos', photos);

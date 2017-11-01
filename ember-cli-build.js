@@ -17,8 +17,13 @@ module.exports = function(defaults) {
     'ember-cli-babel': {
       /**
        * Fix for es6 errors in phantomjs tests
+       * 
        */
-      includePolyfill: (EmberAddon.env() === 'test'),
+      // includePolyfill: (EmberAddon.env() === 'test'),
+      includePolyfill: true,
+    },
+    babel: {
+      sourceMaps: 'inline'
     },
   });
 

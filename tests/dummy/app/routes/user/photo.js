@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import fetch from 'ember-network/fetch';
+import fetch from 'ember-fetch/ajax';
 
 export default Ember.Route.extend({
   headData: Ember.inject.service(),
@@ -9,7 +9,7 @@ export default Ember.Route.extend({
   model({ photo_id }) {
     const user = this.modelFor('user');
     return fetch(`https://jsonplaceholder.typicode.com/photos/${photo_id}`)
-      .then(response => response.json())
+      // .then(response => response.json())
       .then(photo => {
         Ember.set(user, 'photo', photo);
         return user;
